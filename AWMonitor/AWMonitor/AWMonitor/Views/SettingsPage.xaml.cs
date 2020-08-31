@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace AWMonitor.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ForgetPasswordPage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public ForgetPasswordPage()
+        public SettingsPage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

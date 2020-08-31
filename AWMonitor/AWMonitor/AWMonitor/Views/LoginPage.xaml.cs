@@ -20,17 +20,17 @@ namespace AWMonitor.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new DashboardPage(); 
+            Application.Current.MainPage = new MainPage();
         }
 
         private void Register_Tapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new RegisterPage());
+            Navigation.PushAsync(new RegisterPage());
         }
 
         private void ForgetPassword_Tapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new ForgetPasswordPage());
+            Navigation.PushAsync(new ForgetPasswordPage());
         }
     }
 }
