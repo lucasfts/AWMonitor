@@ -21,7 +21,7 @@ namespace AWMonitor.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Dashboard, (NavigationPage)Detail);
+            //MenuPages.Add((int)MenuItemType.History, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -30,7 +30,10 @@ namespace AWMonitor.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Dashboard:
+                    case (int)MenuItemType.Boxes:
+                        MenuPages.Add(id, new NavigationPage(new QualityBoxPage()));
+                        break;
+                    case (int)MenuItemType.History:
                         MenuPages.Add(id, new NavigationPage(new DashboardPage()));
                         break;
                     case (int)MenuItemType.Settings:

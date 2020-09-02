@@ -6,10 +6,12 @@ namespace AWMonitor.Models
 {
     public enum MenuItemType
     {
-        Dashboard,
+        Boxes,
+        History,
         Settings,
         About
     }
+
     public class HomeMenuItem
     {
         public MenuItemType Id { get; set; }

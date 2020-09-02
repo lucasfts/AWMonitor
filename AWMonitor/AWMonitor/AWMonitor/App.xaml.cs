@@ -14,6 +14,7 @@ namespace AWMonitor
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<MockBoxDataStore>();
             MainPage = new NavigationPage(new LoginPage());
         }
 
