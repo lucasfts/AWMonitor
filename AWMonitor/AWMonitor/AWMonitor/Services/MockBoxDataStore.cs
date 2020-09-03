@@ -13,7 +13,10 @@ namespace AWMonitor.Services
 
         public MockBoxDataStore()
         {
-            boxes = new List<QualityBox>();
+            boxes = new List<QualityBox>() { 
+              new QualityBox { Name = "QB001 - Entrada"},
+              new QualityBox { Name = "QB001 - Saída"}
+            };
         }
 
         public async Task<bool> AddItemAsync(QualityBox box)
