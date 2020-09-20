@@ -22,6 +22,7 @@ namespace AWMonitor.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Dashboard, Title="Dashboard" },
+                new HomeMenuItem {Id = MenuItemType.History, Title="Histórico" },
                 new HomeMenuItem {Id = MenuItemType.Routine, Title="Rotinas" },
                 new HomeMenuItem {Id = MenuItemType.Settings, Title="Configurações" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="Sobre" }

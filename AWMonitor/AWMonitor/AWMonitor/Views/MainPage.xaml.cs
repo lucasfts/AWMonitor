@@ -33,14 +33,17 @@ namespace AWMonitor.Views
                     case (int)MenuItemType.Dashboard:
                         MenuPages.Add(id, new NavigationPage(new DashboardPage()));
                         break;
+                    case (int)MenuItemType.History:
+                        MenuPages.Add(id, new NavigationPage(new HistoryPage()));
+                        break;
+                    case (int)MenuItemType.Routine:
+                        MenuPages.Add(id, new NavigationPage(new RoutinesPage()));
+                        break;
                     case (int)MenuItemType.Settings:
                         MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
-                        break;
-                    case (int)MenuItemType.Routine:
-                        MenuPages.Add(id, new NavigationPage(new RoutinesPage()));
                         break;
                 }
             }

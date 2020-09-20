@@ -7,6 +7,7 @@ namespace AWMonitor.Models
     public enum MenuItemType
     {
         Dashboard,
+        History,
         Routine,
         Settings,
         About

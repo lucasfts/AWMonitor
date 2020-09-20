@@ -13,7 +13,23 @@ namespace AWMonitor.Services
 
         public RoutineService()
         {
-            items = new List<Routine>();
+            items = new List<Routine>()
+            {
+                new Routine
+                {
+                    Actuator = "Bomba [IN001]",
+                    Condition = "igual a",
+                    ConditionValue = 0,
+                    Action = "Ligar"
+                },
+                new Routine
+                {
+                    Actuator = "Solenóide [OUT002]",
+                    Condition = "maior que",
+                    ConditionValue = 2,
+                    Action = "Desligar"
+                }
+            };
         }
 
         public async Task<bool> AddItemAsync(Routine item)
