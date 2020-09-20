@@ -6,11 +6,10 @@ namespace AWMonitor.Models
 {
     public enum MenuItemType
     {
-        Boxes,
-        History,
+        Dashboard,
+        Routine,
         Settings,
-        About,
-        Routine
+        About
     }
 
     public class HomeMenuItem

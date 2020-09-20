@@ -13,6 +13,8 @@ namespace AWMonitor.Views
         public AboutPage()
         {
             InitializeComponent();
+
+            Title = "Sobre";
         }
     }
 }

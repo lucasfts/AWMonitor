@@ -15,6 +15,8 @@ namespace AWMonitor.Views
         public SettingsPage()
         {
             InitializeComponent();
+
+            Title = "Configurações";
         }
     }
 }

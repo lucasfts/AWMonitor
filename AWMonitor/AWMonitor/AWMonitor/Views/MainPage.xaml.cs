@@ -30,10 +30,7 @@ namespace AWMonitor.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Boxes:
-                        MenuPages.Add(id, new NavigationPage(new QualityBoxPage()));
-                        break;
-                    case (int)MenuItemType.History:
+                    case (int)MenuItemType.Dashboard:
                         MenuPages.Add(id, new NavigationPage(new DashboardPage()));
                         break;
                     case (int)MenuItemType.Settings:

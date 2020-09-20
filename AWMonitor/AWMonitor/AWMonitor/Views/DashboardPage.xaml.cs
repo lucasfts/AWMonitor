@@ -15,6 +15,8 @@ namespace AWMonitor.Views
         public DashboardPage()
         {
             InitializeComponent();
+
+            Title = "Dashboard";
         }
     }
 }

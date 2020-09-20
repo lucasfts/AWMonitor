@@ -19,7 +19,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:QualityBoxPage />
+                <views:DashboardPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

@@ -4,49 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="AWMonitor.Views.SettingsPage">
+             x:Class="AWMonitor.Views.SettingsPage"
+             Title="{Binding Title}">
     <ContentPage.Content>
-        <Grid Margin="30" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Entry Grid.Row="0" Grid.ColumnSpan="2" Placeholder="Digite o nome da sua rotina" />
-            <Picker Grid.Row="1" Grid.ColumnSpan="2" Title="Escolha o atuador" />
-            <Frame Grid.Row="2" Grid.ColumnSpan="2">
-                <StackLayout>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Entry Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Placeholder="Grupo de Sensores" />
-                        <Label Grid.Row="1" Grid.Column="0"  Text="Nível" />
-                        <Slider Grid.Row="1" Grid.Column="1" Minimum="0" Maximum="1" />
-                        <Label Grid.Row="2" Grid.Column="0"  Text="Temperatura" />
-                        <Slider Grid.Row="2" Grid.Column="1" Minimum="0" Maximum="1" />
-                    </Grid>
-                </StackLayout>
-            </Frame>
-            <CheckBox Grid.Row="4" Grid.Column="0"  />
-            <Label Grid.Row="4" Grid.Column="1" Text="Ativar rotina" ></Label>
-            <CheckBox Grid.Row="5" Grid.Column="0"  />
-            <Label Grid.Row="5" Grid.Column="1" Text="Notificar" ></Label>
-        </Grid>
+        <StackLayout Padding="30">
+            <Label Text="Url" FontSize="Medium" />
+            <Entry Placeholder="" Text="http://ec2-18-207-3-216.compute-1.amazonaws.com" />
+            <Label Text="Porta" FontSize="Medium" />
+            <Entry Placeholder="" Text="1880" />
+            <Label Text="Usuario" FontSize="Medium" />
+            <Entry Placeholder="" Text="Admin" />
+            <Label Text="Senha" FontSize="Medium" />
+            <Entry IsPassword="True" Placeholder="" Text="1234" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
