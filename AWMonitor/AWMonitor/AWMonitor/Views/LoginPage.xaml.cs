@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AWMonitor.Models;
+using AWMonitor.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,14 +15,14 @@ namespace AWMonitor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        LoginVM viewModel;
+
         public LoginPage()
         {
             InitializeComponent();
-        }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new MainPage();
+            viewModel = new LoginVM();
+            BindingContext = viewModel;
         }
 
         private void Register_Tapped(object sender, EventArgs e)
@@ -31,6 +33,11 @@ namespace AWMonitor.Views
         private void ForgetPassword_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ForgetPasswordPage());
+        }
+
+        private void btnLogin_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Login();
         }
     }
 }
