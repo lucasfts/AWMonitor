@@ -13,8 +13,8 @@
     
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label  Text="Atuador" FontSize="Medium" />
-            <Picker Title="Escolha o atuador" ItemsSource="{Binding Actuators}" SelectedItem="{Binding Actuator}"  />
+            <Label  Text="Sensor" FontSize="Medium" />
+            <Picker Title="Escolha o sensor" ItemsSource="{Binding Sensors}" SelectedItem="{Binding Sensor}"  />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -34,6 +34,9 @@
             <Label Text="Ação" FontSize="Medium" />
             <Picker Title="Escolha a ação" ItemsSource="{Binding Actions}" SelectedItem="{Binding Action}" />
 
+            <Label  Text="Atuador" FontSize="Medium" />
+            <Picker Title="Escolha o atuador" ItemsSource="{Binding Actuators}" SelectedItem="{Binding Actuator}"  />
+            
             <StackLayout Orientation="Horizontal">
                 <CheckBox VerticalOptions="Center"  IsChecked="{Binding Enabled}"  />
                 <Label VerticalOptions="Center" Text="Ativar Rotina" ></Label>

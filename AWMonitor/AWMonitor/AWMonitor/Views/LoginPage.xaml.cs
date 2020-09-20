@@ -21,7 +21,7 @@ namespace AWMonitor.Views
         {
             InitializeComponent();
 
-            viewModel = new LoginVM();
+            viewModel = new LoginVM() { Phone = "123456789", Password="1234" } ;
             BindingContext = viewModel;
         }
 

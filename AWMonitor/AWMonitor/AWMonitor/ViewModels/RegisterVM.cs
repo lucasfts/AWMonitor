@@ -78,7 +78,10 @@ namespace AWMonitor.ViewModels
                     bool isRegistered = await _userService.Register(this.user);
 
                     if (isRegistered)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Parabéns", "Usuário cadastrado com sucesso", "Ok");
                         await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
+                    }
                     else
                         await App.Current.MainPage.DisplayAlert("Erro", "Erro ao criar usuário", "Ok");
                 }

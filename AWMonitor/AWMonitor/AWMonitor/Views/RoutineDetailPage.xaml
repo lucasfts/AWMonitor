@@ -8,8 +8,8 @@
     <ContentPage.Content>
         <StackLayout Spacing="30" Padding="30">
             <StackLayout Orientation="Horizontal">
-                <Label Text="Atuador: " HorizontalOptions="Start" />
-                <Label Text="{Binding Actuator}" HorizontalOptions="StartAndExpand" />
+                <Label Text="Sensor: " HorizontalOptions="Start" />
+                <Label Text="{Binding Sensor}" HorizontalOptions="StartAndExpand" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Condição: " HorizontalOptions="Start" />
@@ -20,6 +20,10 @@
             <StackLayout Orientation="Horizontal">
                 <Label Text="Ação: " HorizontalOptions="Start" />
                 <Label Text="{Binding Action}" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Atuador: " HorizontalOptions="Start" />
+                <Label Text="{Binding Actuator}" HorizontalOptions="StartAndExpand" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Ativada: " HorizontalOptions="Start" />

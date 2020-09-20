@@ -17,6 +17,7 @@ namespace AWMonitor.Services
             {
                 new Routine
                 {
+                    Sensor = "PH [IN004]",
                     Actuator = "Bomba [IN001]",
                     Condition = "igual a",
                     ConditionValue = 0,
@@ -24,9 +25,10 @@ namespace AWMonitor.Services
                 },
                 new Routine
                 {
+                    Sensor = "Temperatura [OUT003]",
                     Actuator = "Solenóide [OUT002]",
                     Condition = "maior que",
-                    ConditionValue = 2,
+                    ConditionValue = 37,
                     Action = "Desligar"
                 }
             };

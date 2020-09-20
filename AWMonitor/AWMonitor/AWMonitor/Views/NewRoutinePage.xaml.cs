@@ -40,6 +40,7 @@ namespace AWMonitor.Views
         {
             return new Routine()
             {
+                Sensor = viewModel.Sensor,
                 Actuator = viewModel.Actuator,
                 Action = viewModel.Action,
                 Condition = viewModel.Condition,

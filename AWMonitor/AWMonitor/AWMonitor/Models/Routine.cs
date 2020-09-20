@@ -9,6 +9,7 @@ namespace AWMonitor.Models
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
+        public string Sensor { get; set; }
         public string Actuator { get; set; }
         public string Action { get; set; }
         public string Condition { get; set; }
@@ -16,7 +17,7 @@ namespace AWMonitor.Models
         public bool Enabled { get; set; }
         public bool Notify { get; set; }
 
-        public string DisplayName => $"{Actuator} {Condition} {ConditionValue} ({Action})";
+        public string DisplayName => $"{Sensor} {Condition} {ConditionValue} ({Action} {Actuator})";
 
     }
 }
