@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AWMonitor.Services;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,32 @@ namespace AWMonitor.Models
 {
     public class User : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string id;
+
+        [JsonProperty("_id")]
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("_Id");
+            }
+        }
+
+
         private string name;
 
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
         }
 
         private string phone;
@@ -37,8 +58,6 @@ namespace AWMonitor.Models
 
         private string password;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public string Password
         {
             get { return password; }
@@ -55,31 +74,30 @@ namespace AWMonitor.Models
 
         public static async Task<bool> Login(User user)
         {
-            try
+            var response = await WebClientService.PostAsync("http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/users/login", user);
+
+            if (response.IsSuccessStatusCode)
             {
-
-                using (HttpClient client = new HttpClient())
-                {
-                    var jsonSerializerSettings = new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver() };
-                    var jsonUser = JsonConvert.SerializeObject(user, jsonSerializerSettings);
-                    var content = new StringContent(jsonUser, Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync("http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/users/login", content);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var strResult = response.Content.ReadAsStringAsync().Result;
-                        var userLogin = JsonConvert.DeserializeObject<User>(strResult);
-                        return true;
-                    }
-
-                    return false;
-                }
-
+                var strResult = response.Content.ReadAsStringAsync().Result;
+                var userLogin = JsonConvert.DeserializeObject<User>(strResult);
+                return true;
             }
-            catch (Exception ex)
+
+            return false;
+        }
+
+        public static async Task<bool> Register(User user)
+        {
+            var response = await WebClientService.PostAsync("http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/users/save", user);
+
+            if (response.IsSuccessStatusCode)
             {
-                return false;
+                var strResult = response.Content.ReadAsStringAsync().Result;
+                var userLogin = JsonConvert.DeserializeObject<User>(strResult);
+                return true;
             }
+
+            return false;
         }
 
         private void OnPropertyChanged(string propertyName)

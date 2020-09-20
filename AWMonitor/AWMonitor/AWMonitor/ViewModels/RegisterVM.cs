@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AWMonitor.ViewModels
 {
-    public class LoginVM : INotifyPropertyChanged
+    public class RegisterVM
     {
         private User user;
 
@@ -23,21 +23,21 @@ namespace AWMonitor.ViewModels
             }
         }
 
-        public LoginVM()
+        public RegisterVM()
         {
             User = new User();
         }
 
-        public async void Login()
+        public async void Register()
         {
             try
             {
-                bool canLogin = await User.Login(this.user);
+                bool canLogin = await User.Register(this.user);
 
                 if (canLogin)
-                    await App.Current.MainPage.Navigation.PushAsync(new MainPage());
+                    await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
                 else
-                    await App.Current.MainPage.DisplayAlert("Erro", "Telefone e/ou PIN inválidos", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Erro", "Erro ao criar usuário", "Ok");
             }
             catch (Exception ex)
             {
@@ -49,6 +49,5 @@ namespace AWMonitor.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
     }
 }
