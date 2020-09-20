@@ -42,6 +42,9 @@ namespace AWMonitor.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
+                    case (int)MenuItemType.Routine:
+                        MenuPages.Add(id, new NavigationPage(new RoutinesPage()));
+                        break;
                 }
             }
 

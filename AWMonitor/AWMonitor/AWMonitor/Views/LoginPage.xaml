@@ -17,8 +17,8 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Entry Grid.Row="1" Keyboard="Telephone"  Placeholder="Digite seu numero de celular:" Text="{Binding User.Phone, Mode=TwoWay}" />
-            <Entry Grid.Row="2" Keyboard="Numeric"  Placeholder="Digite seu codigo PIN de 4 dígitos:" IsPassword="True" Text="{Binding User.Password, Mode=TwoWay}" />
+            <Entry Grid.Row="1" Keyboard="Telephone"  Placeholder="Digite seu numero de celular:" Text="{Binding Phone, Mode=TwoWay}" />
+            <Entry Grid.Row="2" Keyboard="Numeric"  Placeholder="Digite seu codigo PIN de 4 dígitos:" IsPassword="True" Text="{Binding Password, Mode=TwoWay}" />
             <Button x:Name="btnLogin" Clicked="btnLogin_Clicked"   Grid.Row="3" Text="Fazer Log-in"  />
             <Label  Grid.Row="4" Margin="20" HorizontalOptions="Start" Text="Registrar" TextColor="Blue" >
                 <Label.GestureRecognizers>

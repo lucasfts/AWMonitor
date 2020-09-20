@@ -4,32 +4,29 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="AWMonitor.Views.QualityBoxPage"
-             Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
-    
+             x:Class="AWMonitor.Views.RoutinesPage"
+             Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+        <ToolbarItem x:Name="btnAdd" Text="Add" Clicked="btnAdd_Clicked" />
     </ContentPage.ToolbarItems>
 
-    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadBoxesCommand}">
-        <CollectionView x:Name="BoxesCollectionView"
-                ItemsSource="{Binding Boxes}">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadRoutinesCommand}">
+        <CollectionView ItemsSource="{Binding Routines}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
-                        <Label Text="{Binding Name}" 
+                        <Label Text="{Binding DisplayName, Mode=OneTime}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnSelected"></TapGestureRecognizer>
+                            <TapGestureRecognizer x:Name="tapItemDetail" Tapped="tapItemDetail_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </RefreshView>
-
+        </RefreshView>
 </ContentPage>

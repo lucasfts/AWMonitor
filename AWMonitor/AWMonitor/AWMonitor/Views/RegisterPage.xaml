@@ -19,9 +19,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Entry Grid.Row="1" Text="{Binding User.Name, Mode=TwoWay}"  Placeholder="Conte-nos como gostaria de ser chamado:" />
-            <Entry Grid.Row="2" Keyboard="Telephone" Text="{Binding User.Phone, Mode=TwoWay}" Placeholder="Digite seu numero de celular:" />
-            <Entry Grid.Row="3" Keyboard="Numeric" Text="{Binding User.Password, Mode=TwoWay}" Placeholder="Crie um PIN de 4 dígitos:" IsPassword="True" />
+            <Entry Grid.Row="1" Text="{Binding Name, Mode=TwoWay}"  Placeholder="Conte-nos como gostaria de ser chamado:" />
+            <Entry Grid.Row="2" Keyboard="Telephone" Text="{Binding Phone, Mode=TwoWay}" Placeholder="Digite seu numero de celular:" />
+            <Entry Grid.Row="3" Keyboard="Numeric" Text="{Binding Password, Mode=TwoWay}" Placeholder="Crie um PIN de 4 dígitos:" IsPassword="True" />
             <Button x:Name="btnRegister" Clicked="btnRegister_Clicked" Grid.Row="4" Text="Registrar-se"  />
         </Grid>
     </ContentPage.Content>

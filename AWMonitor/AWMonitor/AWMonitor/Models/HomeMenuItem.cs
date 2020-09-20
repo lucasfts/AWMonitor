@@ -9,7 +9,8 @@ namespace AWMonitor.Models
         Boxes,
         History,
         Settings,
-        About
+        About,
+        Routine
     }
 
     public class HomeMenuItem

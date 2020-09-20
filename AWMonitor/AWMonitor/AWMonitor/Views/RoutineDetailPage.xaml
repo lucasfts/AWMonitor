@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="AWMonitor.Views.RoutineDetailPage">
+    <ContentPage.Content>
+        <StackLayout Spacing="30" Padding="30">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Atuador: " HorizontalOptions="Start" />
+                <Label Text="{Binding Actuator}" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Condição: " HorizontalOptions="Start" />
+                <Label Text="{Binding Condition}" HorizontalOptions="StartAndExpand" />
+                <Label Text=" " HorizontalOptions="Start" />
+                <Label Text="{Binding ConditionValue}" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Ação: " HorizontalOptions="Start" />
+                <Label Text="{Binding Action}" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Ativada: " HorizontalOptions="Start" />
+                <Label Text="{Binding Enabled}" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Notificar: " HorizontalOptions="Start" />
+                <Label Text="{Binding Notify}" HorizontalOptions="StartAndExpand" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
