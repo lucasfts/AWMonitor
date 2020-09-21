@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AWMonitor.Models;
+using AWMonitor.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +14,13 @@ namespace AWMonitor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
-        public SettingsPage()
+        public SettingsPage(Settings settings)
         {
             InitializeComponent();
 
             Title = "Configurações";
+
+            BindingContext = settings;
         }
     }
 }

@@ -4,18 +4,16 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="AWMonitor.Views.SettingsPage"
-             Title="{Binding Title}">
+             x:Class="AWMonitor.Views.CreateSettingsPage">
     <ContentPage.Content>
         <StackLayout Padding="30">
+            <Label Text="Quase lá!" FontSize="Large" Margin="0, 30, 0, 30" HorizontalOptions="Center" />
+            <Label Text="Informe os dados para continuar." FontSize="Medium" Margin="0, 0,0, 50" HorizontalOptions="Center" />
             <Label Text="Url" FontSize="Medium" />
-            <Entry Placeholder="" Text="{Binding Url}" />
+            <Entry Placeholder="" Text="{Binding Url, Mode=TwoWay}" />
             <Label Text="Porta" FontSize="Medium" />
-            <Entry Placeholder="" Keyboard="Numeric" Text="{Binding Port}" />
-            <Label Text="Usuario" FontSize="Medium" />
-            <Entry Placeholder="" Text="Admin" />
-            <Label Text="Senha" FontSize="Medium" />
-            <Entry IsPassword="True" Placeholder="" Text="1234" />
+            <Entry Placeholder="" Keyboard="Numeric" Text="{Binding Port, Mode=TwoWay}" />
+            <Button Text="Continuar" x:Name="btnContinue" Clicked="btnContinue_Clicked"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

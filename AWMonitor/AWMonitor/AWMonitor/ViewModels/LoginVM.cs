@@ -11,6 +11,7 @@ namespace AWMonitor.ViewModels
     public class LoginVM : BaseViewModel
     {
         private readonly UserService _userService;
+        private readonly SettingsService _settingsService;
 
         private User user;
         public User User
@@ -50,12 +51,13 @@ namespace AWMonitor.ViewModels
         {
             User = new User();
             _userService = new UserService();
+            _settingsService = new SettingsService();
         }
 
         public async void Login()
         {
             try
-            { 
+            {
                 var isPhoneEmpty = string.IsNullOrEmpty(phone?.Trim());
                 var isPasswordEmpty = string.IsNullOrEmpty(password?.Trim());
 
@@ -67,7 +69,14 @@ namespace AWMonitor.ViewModels
                     bool isLoggedIn = await _userService.Login(this.user);
 
                     if (isLoggedIn)
-                        App.Current.MainPage = new MainPage();
+                    {
+                        var settings = await _settingsService.GetFirstOrDefaultAsync();
+
+                        if (settings != null)
+                            App.Current.MainPage = new MainPage();
+                        else
+                            App.Current.MainPage = new CreateSettingsPage();
+                    }
                     else
                         await App.Current.MainPage.DisplayAlert("Erro", "Telefone e/ou PIN inválidos", "Ok");
                 }

@@ -3,6 +3,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AWMonitor.Services;
 using AWMonitor.Views;
+using SQLite;
+using System.IO;
+using Xamarin.Essentials;
 
 namespace AWMonitor
 {
@@ -19,6 +22,7 @@ namespace AWMonitor
 
         protected override void OnStart()
         {
+            
         }
 
         protected override void OnSleep()

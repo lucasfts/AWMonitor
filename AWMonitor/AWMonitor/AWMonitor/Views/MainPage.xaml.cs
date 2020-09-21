@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using AWMonitor.Models;
+using AWMonitor.Services;
 
 namespace AWMonitor.Views
 {
@@ -40,7 +41,8 @@ namespace AWMonitor.Views
                         MenuPages.Add(id, new NavigationPage(new RoutinesPage()));
                         break;
                     case (int)MenuItemType.Settings:
-                        MenuPages.Add(id, new NavigationPage(new SettingsPage()));
+                        var settings = await new SettingsService().GetFirstOrDefaultAsync();
+                        MenuPages.Add(id, new NavigationPage(new SettingsPage(settings)));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
