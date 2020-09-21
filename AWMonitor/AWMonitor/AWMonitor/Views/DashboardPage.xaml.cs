@@ -17,6 +17,9 @@ namespace AWMonitor.Views
             InitializeComponent();
 
             Title = "Dashboard";
+
+            webView.WidthRequest = Width;
+            webView.HeightRequest = Height;
         }
     }
 }

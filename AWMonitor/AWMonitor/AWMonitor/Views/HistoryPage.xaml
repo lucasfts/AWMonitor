@@ -5,9 +5,5 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.HistoryPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <WebView Source="http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/ui/#!/3" WidthRequest="1920" HeightRequest="571"  />
-        </StackLayout>
-    </ContentPage.Content>
+    <WebView x:Name="webView" Source="http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/ui/#!/3"  />
 </ContentPage>
