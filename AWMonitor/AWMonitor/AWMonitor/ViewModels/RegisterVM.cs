@@ -5,12 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AWMonitor.ViewModels
 {
     public class RegisterVM : BaseViewModel
     {
-        private readonly UserService _userService;
+        private IUserService _userService => DependencyService.Get<IUserService>();
 
         private User user;
         public User User
@@ -59,7 +60,6 @@ namespace AWMonitor.ViewModels
         public RegisterVM()
         {
             User = new User();
-            _userService = new UserService();
         }
 
         public async void Register()

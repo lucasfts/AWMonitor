@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace AWMonitor.Services
 {
-    public class SettingsService : IDataStore<Settings>
+    public class SettingsService : ISettingsService
     {
         private readonly SQLiteAsyncConnection _database;
 

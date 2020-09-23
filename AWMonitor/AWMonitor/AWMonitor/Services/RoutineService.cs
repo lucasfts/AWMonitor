@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AWMonitor.Services
 {
-    public class RoutineService : IDataStore<Routine>
+    public class RoutineService : IRoutineService
     {
         readonly List<Routine> items;
 

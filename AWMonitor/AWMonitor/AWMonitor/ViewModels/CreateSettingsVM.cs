@@ -4,12 +4,13 @@ using AWMonitor.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AWMonitor.ViewModels
 {
     public class CreateSettingsVM : BaseViewModel
     {
-        private readonly SettingsService _settingsService;
+        private ISettingsService _settingsService => DependencyService.Get<ISettingsService>();
 
         private string url;
         private string port;
@@ -19,7 +20,6 @@ namespace AWMonitor.ViewModels
 
         public CreateSettingsVM()
         {
-            _settingsService = new SettingsService();
         }
 
         public async void CreateAndContinue()

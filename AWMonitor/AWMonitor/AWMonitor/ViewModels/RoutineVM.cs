@@ -13,7 +13,7 @@ namespace AWMonitor.ViewModels
 {
     public class RoutineVM : BaseViewModel
     {
-        private readonly RoutineService _routineService;
+        private IRoutineService _routineService => DependencyService.Get<IRoutineService>();
         public ObservableCollection<Routine> Routines { get; set; }
         public Command LoadRoutinesCommand { get; set; }
 
@@ -21,7 +21,6 @@ namespace AWMonitor.ViewModels
         {
             Title = "Rotinas";
 
-            _routineService = new RoutineService();
             Routines = new ObservableCollection<Routine>();
             LoadRoutinesCommand = new Command(async () => await ExecuteLoadRoutinesCommand());
 

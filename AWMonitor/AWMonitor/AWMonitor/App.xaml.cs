@@ -15,8 +15,7 @@ namespace AWMonitor
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
+            RegisterServices();
             MainPage = new NavigationPage(new LoginPage());
         }
 
@@ -31,6 +30,13 @@ namespace AWMonitor
 
         protected override void OnResume()
         {
+        }
+
+        private static void RegisterServices()
+        {
+            DependencyService.Register<RoutineService>();
+            DependencyService.Register<SettingsService>();
+            DependencyService.Register<UserService>();
         }
     }
 }

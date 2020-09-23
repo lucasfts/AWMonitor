@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AWMonitor.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         public async Task<bool> Login(User user)
         {

@@ -5,13 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace AWMonitor.ViewModels
 {
     public class LoginVM : BaseViewModel
     {
-        private readonly UserService _userService;
-        private readonly SettingsService _settingsService;
+        private IUserService _userService => DependencyService.Get<IUserService>();
+        private ISettingsService _settingsService => DependencyService.Get<ISettingsService>();
 
         private User user;
         public User User
@@ -50,8 +51,6 @@ namespace AWMonitor.ViewModels
         public LoginVM()
         {
             User = new User();
-            _userService = new UserService();
-            _settingsService = new SettingsService();
         }
 
         public async void Login()
