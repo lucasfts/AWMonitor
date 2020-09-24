@@ -15,6 +15,7 @@
                 <RowDefinition  Height="Auto" />
                 <RowDefinition  Height="Auto" />
                 <RowDefinition  Height="Auto" />
+                <RowDefinition  Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -23,6 +24,9 @@
             <Entry Grid.Row="2" Keyboard="Telephone" Text="{Binding Phone, Mode=TwoWay}" Placeholder="Digite seu numero de celular:" />
             <Entry Grid.Row="3" Keyboard="Numeric" Text="{Binding Password, Mode=TwoWay}" Placeholder="Crie um PIN de 4 dígitos:" IsPassword="True" />
             <Button x:Name="btnRegister" Clicked="btnRegister_Clicked" Grid.Row="4" Text="Registrar-se"  />
+            <ActivityIndicator Grid.Row="5" x:Name="activity" HeightRequest="100" VerticalOptions="CenterAndExpand"
+                             IsRunning="{Binding IsBusy}"
+                             IsVisible="{Binding IsBusy}" Color="{StaticResource NavigationPrimary}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

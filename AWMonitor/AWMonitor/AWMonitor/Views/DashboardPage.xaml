@@ -6,5 +6,15 @@
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.DashboardPage"
              Title="{Binding Title}">
-    <WebView x:Name="webView" Source="http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/ui/#!/0" />
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <WebView x:Name="webView" Navigating="webView_Navigating" Navigated="webView_Navigated" Source="http://ec2-18-207-3-216.compute-1.amazonaws.com:1880/ui/#!/0" />
+        <ActivityIndicator VerticalOptions="CenterAndExpand" HeightRequest="100" x:Name="activity" Color="{StaticResource NavigationPrimary}"/>
+    </Grid>
+
 </ContentPage>

@@ -1,4 +1,5 @@
 ﻿using AWMonitor.Models;
+using AWMonitor.Services.Helpers;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,10 @@ namespace AWMonitor.Services
 {
     public class SettingsService : ISettingsService
     {
-        private readonly SQLiteAsyncConnection _database;
+        private SQLiteAsyncConnection _database => SQLiteHelper.GetAsyncConnection();
 
         public SettingsService()
         {
-            var connectionString = Path.Combine(FileSystem.AppDataDirectory, "awmonitor.db");
-            _database = new SQLiteAsyncConnection(connectionString);
             _database.CreateTableAsync<Settings>().Wait();
         }
 
