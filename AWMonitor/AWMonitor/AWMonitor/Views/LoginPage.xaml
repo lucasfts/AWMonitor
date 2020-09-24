@@ -21,7 +21,7 @@
             </Grid.ColumnDefinitions>
             <Entry Grid.Row="1" Keyboard="Telephone"  Placeholder="Digite seu numero de celular:" Text="{Binding Phone, Mode=TwoWay}" />
             <Entry Grid.Row="2" Keyboard="Numeric" Placeholder="Digite seu codigo PIN de 4 dígitos:" IsPassword="True" Text="{Binding Password, Mode=TwoWay}" />
-            <Button x:Name="btnLogin" Clicked="btnLogin_Clicked"   Grid.Row="3" Text="Fazer Log-in"  />
+            <Button x:Name="btnLogin" Grid.Row="3" Clicked="btnLogin_Clicked" Text="Fazer Log-in"  />
             <Label  Grid.Row="4" Margin="20" HorizontalOptions="Start" Text="Registrar" TextColor="Blue" >
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Register_Tapped" NumberOfTapsRequired="1" />
@@ -32,9 +32,7 @@
                     <TapGestureRecognizer Tapped="ForgetPassword_Tapped" NumberOfTapsRequired="1"/>
                 </Label.GestureRecognizers>
             </Label>
-            <ActivityIndicator Grid.Row="5" HeightRequest="100" VerticalOptions="CenterAndExpand" x:Name="activity"
-                             IsRunning="{Binding IsBusy}"
-                             IsVisible="{Binding IsBusy}" Color="{StaticResource NavigationPrimary}"/>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>
