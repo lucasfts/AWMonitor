@@ -21,13 +21,13 @@ namespace AWMonitor.Views
             InitializeComponent();
 
             BindingContext = viewModel = new RoutineVM();
-
-            if (viewModel.Routines.Count == 0)
-                viewModel.IsBusy = true;
         }
 
         protected override void OnAppearing()
         {
+            if (viewModel.Routines.Count == 0)
+                viewModel.IsBusy = true;
+
             base.OnAppearing();
         }
 
