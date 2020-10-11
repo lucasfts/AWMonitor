@@ -5,15 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.RoutineDetailPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="btnDelete" Text="Excluir" Clicked="btnDelete_Clicked" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout Spacing="30" Padding="30">
             <StackLayout Orientation="Horizontal">
                 <Label Text="Sensor: " HorizontalOptions="Start" />
-                <Label Text="{Binding Sensor}" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding Sensor.Name}" HorizontalOptions="StartAndExpand" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Condição: " HorizontalOptions="Start" />
-                <Label Text="{Binding Condition}" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding Condition.Name}" HorizontalOptions="StartAndExpand" />
                 <Label Text=" " HorizontalOptions="Start" />
                 <Label Text="{Binding ConditionValue}" HorizontalOptions="StartAndExpand" />
             </StackLayout>
@@ -23,7 +27,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Atuador: " HorizontalOptions="Start" />
-                <Label Text="{Binding Actuator}" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding Actuator.Name}" HorizontalOptions="StartAndExpand" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Ativada: " HorizontalOptions="Start" />

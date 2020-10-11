@@ -8,7 +8,7 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="btnAdd" Text="Add" Clicked="btnAdd_Clicked" />
+        <ToolbarItem x:Name="btnAdd" Text="Adicionar" Clicked="btnAdd_Clicked" />
     </ContentPage.ToolbarItems>
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadRoutinesCommand}">
@@ -18,9 +18,9 @@
                     <StackLayout Padding="10">
                         <Label Text="{Binding DisplayName, Mode=OneTime}" 
                                 d:Text="{Binding .}"
-                                LineBreakMode="NoWrap" 
+                                LineBreakMode="WordWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
+                                FontSize="16"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer x:Name="tapItemDetail" Tapped="tapItemDetail_Tapped" NumberOfTapsRequired="1"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>

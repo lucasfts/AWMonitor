@@ -75,15 +75,15 @@ namespace AWMonitor.ViewModels
                     IsBusy = true;
 
                     user = new User() { Name = name, Phone = phone, Password = password };
-                    bool isRegistered = await _userService.Register(this.user);
+                    var registerResult = await _userService.Register(this.user);
 
-                    if (isRegistered)
+                    if (registerResult.Result)
                     {
                         await App.Current.MainPage.DisplayAlert("Parabéns", "Usuário cadastrado com sucesso", "Ok");
                         await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
                     }
                     else
-                        await App.Current.MainPage.DisplayAlert("Erro", "Erro ao criar usuário", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Erro", registerResult.ErrorMessage, "Ok");
                 }
             }
             catch (Exception ex)

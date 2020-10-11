@@ -9,6 +9,6 @@ namespace AWMonitor.Services
     public interface IUserService
     {
         Task<bool> Login(User user);
-        Task<bool> Register(User user);
+        Task<ValidationResult> Register(User user);
     }
 }

@@ -6,15 +6,15 @@
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.NewRoutinePage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" x:Name="btnCancel" Clicked="btnCancel_Clicked" />
-        <ToolbarItem Text="Save" x:Name="btnSave" Clicked="btnSave_Clicked" />
+        <ToolbarItem Text="Cancelar" x:Name="btnCancel" Clicked="btnCancel_Clicked" />
+        <ToolbarItem Text="Salvar" x:Name="btnSave" Clicked="btnSave_Clicked" />
     </ContentPage.ToolbarItems>
     
     
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Label  Text="Sensor" FontSize="Medium" />
-            <Picker Title="Escolha o sensor" ItemsSource="{Binding Sensors}" SelectedItem="{Binding Sensor}"  />
+            <Picker Title="Escolha o sensor" ItemsSource="{Binding Sensors}" SelectedItem="{Binding Sensor}" ItemDisplayBinding="{Binding Name}"  />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Label Text="Condição" FontSize="Medium" />
-                <Picker Grid.Row="1" ItemsSource="{Binding Conditions}" Title="Escolha a condição" SelectedItem="{Binding Condition}"  />
+                <Picker Grid.Row="1" ItemsSource="{Binding Conditions}" Title="Escolha a condição" SelectedItem="{Binding Condition}" ItemDisplayBinding="{Binding Name}" />
                 <Label Grid.Column="1" Text="Valor da Condição" FontSize="Medium" />
                 <Entry Grid.Column="1" Grid.Row="1" Text="{Binding ConditionValue}" Keyboard="Numeric" />
             </Grid>
@@ -35,7 +35,7 @@
             <Picker Title="Escolha a ação" ItemsSource="{Binding Actions}" SelectedItem="{Binding Action}" />
 
             <Label  Text="Atuador" FontSize="Medium" />
-            <Picker Title="Escolha o atuador" ItemsSource="{Binding Actuators}" SelectedItem="{Binding Actuator}"  />
+            <Picker Title="Escolha o atuador" ItemsSource="{Binding Actuators}" SelectedItem="{Binding Actuator}" ItemDisplayBinding="{Binding Name}"  />
             
             <StackLayout Orientation="Horizontal">
                 <CheckBox VerticalOptions="Center"  IsChecked="{Binding Enabled}"  />

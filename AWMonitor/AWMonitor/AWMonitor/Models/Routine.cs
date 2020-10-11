@@ -9,15 +9,15 @@ namespace AWMonitor.Models
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
-        public string Sensor { get; set; }
-        public string Actuator { get; set; }
+        public Sensor Sensor { get; set; }
+        public Actuator Actuator { get; set; }
         public string Action { get; set; }
-        public string Condition { get; set; }
+        public Condition Condition { get; set; }
         public int ConditionValue { get; set; }
         public bool Enabled { get; set; }
         public bool Notify { get; set; }
 
-        public string DisplayName => $"{Sensor} {Condition} {ConditionValue} ({Action} {Actuator})";
+        public string DisplayName => $"{Sensor?.Name} {Condition?.Name} {ConditionValue} ({Action} {Actuator?.Name})";
 
     }
 }

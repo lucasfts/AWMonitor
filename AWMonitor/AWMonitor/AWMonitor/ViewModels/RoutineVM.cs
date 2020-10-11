@@ -26,9 +26,22 @@ namespace AWMonitor.ViewModels
 
             MessagingCenter.Subscribe<NewRoutinePage, Routine>(this, "AddItem", async (obj, item) =>
             {
-                Routines.Add(item);
-                await _routineService.AddItemAsync(item);
+                var result = await _routineService.AddItemAsync(item);
+                if (result)
+                    Routines.Add(item);
+                else
+                    await App.Current.MainPage.DisplayAlert("Erro", "Erro ao adicionar rotina", "Ok");
             });
+
+            MessagingCenter.Subscribe<RoutineDetailPage, Routine>(this, "DeleteItem", async (obj, item) =>
+            {
+                var result = await _routineService.DeleteItemAsync(item.Id);
+                if (result)
+                {
+                    Routines.Remove(item);
+                }
+            });
+
         }
 
         async Task ExecuteLoadRoutinesCommand()

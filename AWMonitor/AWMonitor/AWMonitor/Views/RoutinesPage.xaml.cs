@@ -21,14 +21,14 @@ namespace AWMonitor.Views
             InitializeComponent();
 
             BindingContext = viewModel = new RoutineVM();
+
+            if (viewModel.Routines.Count == 0)
+                viewModel.IsBusy = true;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            if (viewModel.Routines.Count == 0)
-                viewModel.IsBusy = true;
         }
 
         private async void btnAdd_Clicked(object sender, EventArgs e)

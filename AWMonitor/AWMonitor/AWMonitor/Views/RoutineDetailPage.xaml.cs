@@ -21,5 +21,11 @@ namespace AWMonitor.Views
 
             BindingContext = Routine = routine;
         }
+
+        private async void btnDelete_Clicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "DeleteItem", Routine);
+            await Navigation.PopAsync();
+        }
     }
 }

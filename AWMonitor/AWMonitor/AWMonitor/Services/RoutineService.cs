@@ -1,4 +1,6 @@
 ﻿using AWMonitor.Models;
+using AWMonitor.Services.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,65 +11,65 @@ namespace AWMonitor.Services
 {
     public class RoutineService : IRoutineService
     {
-        readonly List<Routine> items;
-
         public RoutineService()
         {
-            items = new List<Routine>()
-            {
-                new Routine
-                {
-                    Sensor = "PH [IN004]",
-                    Actuator = "Bomba [IN001]",
-                    Condition = "igual a",
-                    ConditionValue = 0,
-                    Action = "Ligar"
-                },
-                new Routine
-                {
-                    Sensor = "Temperatura [OUT003]",
-                    Actuator = "Solenóide [OUT002]",
-                    Condition = "maior que",
-                    ConditionValue = 37,
-                    Action = "Desligar"
-                }
-            };
+            
         }
 
         public async Task<bool> AddItemAsync(Routine item)
         {
-            items.Add(item);
+            var response = await HttpHelper.PostAsync("routines/insert", item);
 
-            return true;
+            if (response.IsSuccessStatusCode)
+            {
+                var strResult = response.Content.ReadAsStringAsync().Result;
+                var routineId = JsonConvert.DeserializeObject<Routine>(strResult).Id;
+                item.Id = routineId;
+
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var item = items.FirstOrDefault(x => x.Id == id);
-            items.Remove(item);
+            var response = await HttpHelper.DeleteAsync($"routines/{id}");
 
-            return true;
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<Routine> GetItemAsync(string id)
         {
-            var item = items.FirstOrDefault(x => x.Id == id);
+            var response = await HttpHelper.GetAsync($"routines/{id}");
 
-            return item;
+            if (response.IsSuccessStatusCode)
+            {
+                var strResult = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<Routine>(strResult);
+            }
+
+            return null;
         }
 
-        public async Task<IEnumerable<Routine>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Routine>> GetItemsAsync(bool forceRefresh)
         {
-            return items;
+            var response = await HttpHelper.GetAsync($"routines");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var strResult = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<IEnumerable<Routine>>(strResult);
+            }
+
+            return null;
         }
 
         public async Task<bool> UpdateItemAsync(Routine item)
         {
-            var oldItem = items.FirstOrDefault(x => x.Id == item.Id);
-            items.Remove(oldItem);
-            items.Add(item);
+            var response = await HttpHelper.PostAsync("routines/update", item);
 
-            return true;
+            return response.IsSuccessStatusCode;
         }
     }
 }

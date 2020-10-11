@@ -17,25 +17,23 @@ namespace AWMonitor.Services
             if (response.IsSuccessStatusCode)
             {
                 var strResult = response.Content.ReadAsStringAsync().Result;
-                var userLogin = JsonConvert.DeserializeObject<User>(strResult);
                 return true;
             }
 
             return false;
         }
 
-        public async Task<bool> Register(User user)
+        public async Task<ValidationResult> Register(User user)
         {
-            var response = await HttpHelper.PostAsync("users/save", user);
+            var response = await HttpHelper.PostAsync("users/register", user);
+            var strResult = response.Content.ReadAsStringAsync().Result;
 
             if (response.IsSuccessStatusCode)
             {
-                var strResult = response.Content.ReadAsStringAsync().Result;
-                var userLogin = JsonConvert.DeserializeObject<User>(strResult);
-                return true;
+                return new ValidationResult { Result = true};
             }
 
-            return false;
+            return new ValidationResult { Result = false, ErrorMessage = strResult };
         }
     }
 }
