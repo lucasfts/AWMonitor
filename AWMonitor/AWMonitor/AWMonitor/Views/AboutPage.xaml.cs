@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,7 @@ namespace AWMonitor.Views
             InitializeComponent();
 
             Title = "Sobre";
+            versionName.Text = AppInfo.Version.ToString();
         }
     }
 }
