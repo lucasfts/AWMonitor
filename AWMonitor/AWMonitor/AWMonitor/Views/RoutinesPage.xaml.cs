@@ -21,19 +21,19 @@ namespace AWMonitor.Views
             InitializeComponent();
 
             BindingContext = viewModel = new RoutineVM();
+
+            if (viewModel.Routines.Count == 0)
+                viewModel.IsBusy = true;
         }
 
         protected override void OnAppearing()
         {
-            if (viewModel.Routines.Count == 0)
-                viewModel.IsBusy = true;
-
             base.OnAppearing();
         }
 
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewRoutinePage()));
+            await Navigation.PushAsync(new NewRoutinePage());
         }
 
         private async void tapItemDetail_Tapped(object sender, EventArgs e)

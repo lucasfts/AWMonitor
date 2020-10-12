@@ -25,7 +25,7 @@ namespace AWMonitor.Views
 
         private async void btnCancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         private async void btnSave_Clicked(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace AWMonitor.Views
             Routine routine = GetRoutineModel();
 
             MessagingCenter.Send(this, "AddItem", routine);
-            await Navigation.PopModalAsync();
+            await Navigation.PopAsync();
         }
 
         private Routine GetRoutineModel()
