@@ -41,8 +41,7 @@ namespace AWMonitor.Views
                         MenuPages.Add(id, new NavigationPage(new RoutinesPage()));
                         break;
                     case (int)MenuItemType.Settings:
-                        var settings = await new SettingsService().GetFirstOrDefaultAsync();
-                        MenuPages.Add(id, new NavigationPage(new SettingsPage(settings)));
+                        MenuPages.Add(id, new NavigationPage(new SettingsPage()));
                         break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

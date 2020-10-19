@@ -6,16 +6,16 @@
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.SettingsPage"
              Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" x:Name="btnSave" Clicked="btnSave_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="30">
             <Label Text="Url" FontSize="Medium" />
-            <Entry Placeholder="" Text="{Binding Url}" />
+            <Entry Placeholder="" Text="{Binding Url, Mode=TwoWay}" />
             <Label Text="Porta" FontSize="Medium" />
-            <Entry Placeholder="" Keyboard="Numeric" Text="{Binding Port}" />
-            <Label Text="Usuario" FontSize="Medium" />
-            <Entry Placeholder="" Text="Admin" />
-            <Label Text="Senha" FontSize="Medium" />
-            <Entry IsPassword="True" Placeholder="" Text="1234" />
+            <Entry Placeholder="" Keyboard="Numeric" Text="{Binding Port, Mode=TwoWay}" />
+            <Button x:Name="btnReadQr" Text="Ler Qr Code" Clicked="btnReadQr_Clicked"  />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

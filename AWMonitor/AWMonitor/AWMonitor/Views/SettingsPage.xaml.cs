@@ -1,5 +1,6 @@
 ﻿using AWMonitor.Models;
 using AWMonitor.Services;
+using AWMonitor.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,33 @@ namespace AWMonitor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
-        public SettingsPage(Settings settings)
+        SettingsVM viewModel;
+
+        public SettingsPage()
         {
             InitializeComponent();
 
-            Title = "Configurações";
+            viewModel = new SettingsVM();
 
-            BindingContext = settings;
+            BindingContext = viewModel;
+
+            Title = "Configurações";
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.LoadCurrentSettings();
+        }
+
+        private async void btnReadQr_Clicked(object sender, EventArgs e)
+        {
+            await viewModel.ReadQrCode();
+        }
+
+        private async void btnSave_Clicked(object sender, EventArgs e)
+        {
+            await viewModel.Save();
         }
     }
 }

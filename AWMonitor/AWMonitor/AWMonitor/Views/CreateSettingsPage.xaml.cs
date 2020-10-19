@@ -19,18 +19,18 @@ namespace AWMonitor.Views
         {
             InitializeComponent();
 
-            viewModel = new CreateSettingsVM
-            {
-                Url = "http://ec2-18-207-3-216.compute-1.amazonaws.com",
-                Port = "1880"
-            };
-
+            viewModel = new CreateSettingsVM();
             BindingContext = viewModel;
         }
 
         private void btnContinue_Clicked(object sender, EventArgs e)
         {
             viewModel.CreateAndContinue();
+        }
+
+        private async void btnReadQr_Clicked(object sender, EventArgs e)
+        {
+            await viewModel.ReadQrCode();
         }
     }
 }

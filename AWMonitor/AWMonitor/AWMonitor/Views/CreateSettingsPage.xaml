@@ -13,6 +13,7 @@
             <Entry Placeholder="" Text="{Binding Url, Mode=TwoWay}" />
             <Label Text="Porta" FontSize="Medium" />
             <Entry Placeholder="" Keyboard="Numeric" Text="{Binding Port, Mode=TwoWay}" />
+            <Button x:Name="btnReadQr" Text="Ler Qr Code" Clicked="btnReadQr_Clicked"  />
             <Button Text="Continuar" x:Name="btnContinue" Clicked="btnContinue_Clicked"  />
         </StackLayout>
     </ContentPage.Content>

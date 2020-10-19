@@ -37,6 +37,7 @@ namespace AWMonitor
             DependencyService.Register<RoutineService>();
             DependencyService.Register<SettingsService>();
             DependencyService.Register<UserService>();
+            DependencyService.Register<QrScanningService>();
         }
     }
 }
