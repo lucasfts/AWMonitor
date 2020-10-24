@@ -23,6 +23,11 @@ namespace AWMonitor.Views
             BindingContext = viewModel = new NewRoutineVM();
         }
 
+        protected async override void OnAppearing()
+        {
+            await viewModel.LoadActuators();
+        }
+
         private async void btnCancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
@@ -30,10 +35,22 @@ namespace AWMonitor.Views
 
         private async void btnSave_Clicked(object sender, EventArgs e)
         {
-            Routine routine = GetRoutineModel();
+            try
+            {
+                btnSave.IsEnabled = false;
+                Routine routine = GetRoutineModel();
 
-            MessagingCenter.Send(this, "AddItem", routine);
-            await Navigation.PopAsync();
+                MessagingCenter.Send(this, "AddItem", routine);
+                await Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro", ex.Message, "Ok");
+            }
+            finally
+            {
+                btnSave.IsEnabled = true;
+            }
         }
 
         private Routine GetRoutineModel()

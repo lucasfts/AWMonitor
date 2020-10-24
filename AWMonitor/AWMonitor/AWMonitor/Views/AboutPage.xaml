@@ -5,12 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.AboutPage"
-             xmlns:vm="clr-namespace:AWMonitor.ViewModels"
              Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <vm:AboutViewModel />
-    </ContentPage.BindingContext>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -49,7 +44,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="Desenvolvido por: B.O.I.S Corporation" FontAttributes="Bold" />
+                                <Span Text="EC 10 - 2º Semestre 2020 - Grupo 10" FontAttributes="Bold" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
