@@ -90,6 +90,15 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Orientador: Prof. Me. Filippo Valiante Filho" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </StackLayout>
         </ScrollView>
     </Grid>
