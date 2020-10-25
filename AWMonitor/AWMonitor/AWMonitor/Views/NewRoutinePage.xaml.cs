@@ -40,8 +40,15 @@ namespace AWMonitor.Views
                 btnSave.IsEnabled = false;
                 Routine routine = GetRoutineModel();
 
-                MessagingCenter.Send(this, "AddItem", routine);
-                await Navigation.PopAsync();
+                if (routine.IsValid())
+                {
+                    MessagingCenter.Send(this, "AddItem", routine);
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Erro", "Preencha todos os campos para criar a rotina", "Ok");
+                }
             }
             catch (Exception ex)
             {
