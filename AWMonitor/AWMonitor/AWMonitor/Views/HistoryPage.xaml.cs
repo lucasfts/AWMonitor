@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AWMonitor.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace AWMonitor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistoryPage : ContentPage
     {
+        private static ISettingsService _settingsService => DependencyService.Get<ISettingsService>();
+
         public HistoryPage()
         {
             InitializeComponent();
@@ -20,6 +23,14 @@ namespace AWMonitor.Views
 
             webView.WidthRequest = Width;
             webView.HeightRequest = Height;
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            var settings = await _settingsService.GetFirstOrDefaultAsync();
+            webView.Source = $"{settings.Url}/history.html";
         }
 
         private void webView_Navigating(object sender, WebNavigatingEventArgs e)

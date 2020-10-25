@@ -28,7 +28,7 @@ namespace AWMonitor.ViewModels
                 if (result != null)
                 {
                     var resultArray = result.Split(':');
-                    Url = resultArray[0] + resultArray[1];
+                    Url = $"{resultArray[0]}:{resultArray[1]}";
                     Port = resultArray[2];
                 }
 
@@ -63,11 +63,19 @@ namespace AWMonitor.ViewModels
                 }
                 else
                 {
-                    var settings = await _settingsService.GetFirstOrDefaultAsync();
-                    settings.Url = Url;
-                    settings.Port = Port;
-                    await _settingsService.UpdateItemAsync(settings);
-                    await App.Current.MainPage.DisplayAlert("Sucesso", "Configurações atualizadas com sucesso", "Ok");
+                    var serverStatus = await _settingsService.GetServerStatus(Url, Port);
+                    if (serverStatus == "active")
+                    {
+                        var settings = await _settingsService.GetFirstOrDefaultAsync();
+                        settings.Url = Url;
+                        settings.Port = Port;
+                        await _settingsService.UpdateItemAsync(settings);
+                        await App.Current.MainPage.DisplayAlert("Sucesso", "Configurações atualizadas com sucesso", "Ok");
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("Erro", "Servidor inválido ou indisponível", "Ok");
+                    }
                 }
             }
             catch (Exception ex)

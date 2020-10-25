@@ -35,17 +35,24 @@ namespace AWMonitor.ViewModels
                 }
                 else
                 {
-
-                    var settings = new Settings { Url = Url, Port = Port };
-                    var settingsCreated = await _settingsService.AddItemAsync(settings);
-
-                    if (settingsCreated)
+                    var serverStatus = await _settingsService.GetServerStatus(Url, Port);
+                    if (serverStatus == "active")
                     {
-                        await App.Current.MainPage.DisplayAlert("Parabéns", "Ambiente configurado com sucesso ", "Ok");
-                        App.Current.MainPage = new MainPage();
+                        var settings = new Settings { Url = Url, Port = Port };
+                        var settingsCreated = await _settingsService.AddItemAsync(settings);
+
+                        if (settingsCreated)
+                        {
+                            await App.Current.MainPage.DisplayAlert("Parabéns", "Ambiente configurado com sucesso ", "Ok");
+                            App.Current.MainPage = new MainPage();
+                        }
+                        else
+                            await App.Current.MainPage.DisplayAlert("Erro", "Erro ao salvar as configurações", "Ok");
                     }
                     else
-                        await App.Current.MainPage.DisplayAlert("Erro", "Erro ao salvar as configurações", "Ok");
+                    {
+                        await App.Current.MainPage.DisplayAlert("Erro", "Servidor inválido ou indisponível", "Ok");
+                    }
                 }
             }
             catch (Exception ex)
@@ -63,7 +70,7 @@ namespace AWMonitor.ViewModels
                 if (result != null)
                 {
                     var resultArray = result.Split(':');
-                    Url = resultArray[0] + resultArray[1];
+                    Url = $"{resultArray[0]}:{resultArray[1]}";
                     Port = resultArray[2];
                 }
 

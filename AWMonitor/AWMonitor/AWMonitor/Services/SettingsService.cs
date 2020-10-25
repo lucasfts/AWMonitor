@@ -4,6 +4,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -54,6 +55,30 @@ namespace AWMonitor.Services
         {
             await _database.UpdateAsync(item);
             return true;
+        }
+
+        public async Task<string> GetServerStatus(string url, string port)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var requestUrl = Path.Combine($"{url}:{ port}", "status");
+                    var response = await client.GetAsync(requestUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var strResult = response.Content.ReadAsStringAsync().Result;
+                        return strResult;
+                    }
+
+                    return "unavailable";
+                }
+            }
+            catch (Exception ex)
+            {
+                return "unavailable";
+            }
         }
     }
 }

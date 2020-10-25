@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <Grid Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition  Height="50" />
+                <RowDefinition  Height="200" />
                 <RowDefinition  Height="Auto" />
                 <RowDefinition  Height="Auto" />
                 <RowDefinition  Height="Auto" />
@@ -19,6 +19,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <StackLayout  Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,50,0,50" VerticalOptions="FillAndExpand">
+                        <Image Source="estatisticas.png" VerticalOptions="Center" HeightRequest="100" />
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
             <Entry Grid.Row="1" Keyboard="Telephone"  Placeholder="Digite seu numero de celular:" Text="{Binding Phone, Mode=TwoWay}" />
             <Entry Grid.Row="2" Keyboard="Numeric" Placeholder="Digite seu codigo PIN de 4 dígitos:" IsPassword="True" Text="{Binding Password, Mode=TwoWay}" />
             <Button x:Name="btnLogin" Grid.Row="3" Clicked="btnLogin_Clicked" Text="Fazer Log-in"  />

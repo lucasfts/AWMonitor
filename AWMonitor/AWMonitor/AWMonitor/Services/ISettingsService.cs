@@ -9,5 +9,6 @@ namespace AWMonitor.Services
     public interface ISettingsService : IDataStore<Settings>
     {
         Task<Settings> GetFirstOrDefaultAsync();
+        Task<string> GetServerStatus(string url, string port);
     }
 }
