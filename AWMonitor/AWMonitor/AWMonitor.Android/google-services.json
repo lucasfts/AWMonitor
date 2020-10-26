@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "750370912936",
+    "firebase_url": "https://awmonitor-90a3a.firebaseio.com",
+    "project_id": "awmonitor-90a3a",
+    "storage_bucket": "awmonitor-90a3a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750370912936:android:f2a2629eaa27f67580e09d",
+        "android_client_info": {
+          "package_name": "br.com.awmonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750370912936-mnqnifhga25v86h0ekihvissoii9tk6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqm7hMvKg049mjFSVVq4MB6KXzURpednU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750370912936-mnqnifhga25v86h0ekihvissoii9tk6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
