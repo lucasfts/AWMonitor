@@ -3,33 +3,14 @@ using AWMonitor.Services;
 using AWMonitor.Views;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
 namespace AWMonitor.ViewModels
 {
-    public class RegisterVM : BaseViewModel
+    public class ChangePasswordVM : BaseViewModel
     {
         private IUserService _userService => DependencyService.Get<IUserService>();
-
-        private User user;
-        public User User
-        {
-            get { return user; }
-            set
-            {
-                user = value;
-                OnPropertyChanged("User");
-            }
-        }
-
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { SetProperty(ref name, value); }
-        }
 
         private string phone;
         public string Phone
@@ -42,6 +23,13 @@ namespace AWMonitor.ViewModels
                     SetProperty(ref phone, value);
                 }
             }
+        }
+
+        private int changePasswordCode;
+        public int ChangePasswordCode
+        {
+            get { return changePasswordCode; }
+            set { SetProperty(ref changePasswordCode, value); }
         }
 
         private string password;
@@ -57,29 +45,21 @@ namespace AWMonitor.ViewModels
             }
         }
 
-        public RegisterVM()
-        {
-            User = new User();
-        }
-
-        public async void Register()
+        public async void ChangePassword()
         {
             try
             {
-                var isNameEmpty = string.IsNullOrEmpty(name?.Trim());
-                var isPhoneEmpty = string.IsNullOrEmpty(phone?.Trim());
                 var isPasswordEmpty = string.IsNullOrEmpty(password?.Trim());
 
-                if (!isNameEmpty && !isPhoneEmpty && !isPasswordEmpty)
+                if (!isPasswordEmpty)
                 {
                     IsBusy = true;
 
-                    user = new User() { Name = name, Phone = phone, Password = password };
-                    var registerResult = await _userService.Register(this.user);
+                    var registerResult = await _userService.ChangePassword(phone, changePasswordCode, password);
 
                     if (registerResult.Result)
                     {
-                        await App.Current.MainPage.DisplayAlert("Parabéns", "Usuário cadastrado com sucesso", "Ok");
+                        await App.Current.MainPage.DisplayAlert("Parabéns", "Senha alterada com sucesso!", "Ok");
                         await App.Current.MainPage.Navigation.PushAsync(new LoginPage());
                     }
                     else

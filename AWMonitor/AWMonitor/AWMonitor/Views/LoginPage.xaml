@@ -26,8 +26,8 @@
                     </ContentView>
                 </StackLayout>
             </StackLayout>
-            <Entry Grid.Row="1" Keyboard="Telephone"  Placeholder="Digite seu numero de celular:" Text="{Binding Phone, Mode=TwoWay}" />
-            <Entry Grid.Row="2" Keyboard="Numeric" Placeholder="Digite seu codigo PIN de 4 dígitos:" IsPassword="True" Text="{Binding Password, Mode=TwoWay}" />
+            <Entry Grid.Row="1" Keyboard="Telephone"  Placeholder="Digite seu numero de celular:" Text="{Binding Phone, Mode=TwoWay}" MaxLength="11"  />
+            <Entry Grid.Row="2" Keyboard="Numeric" Placeholder="Digite a senha:" IsPassword="True" Text="{Binding Password, Mode=TwoWay}" MaxLength="8" />
             <Button x:Name="btnLogin" Grid.Row="3" Clicked="btnLogin_Clicked" Text="Fazer Log-in"  />
             <Label  Grid.Row="4" Margin="20" HorizontalOptions="Start" Text="Registrar" TextColor="Blue" >
                 <Label.GestureRecognizers>

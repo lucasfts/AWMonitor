@@ -41,7 +41,7 @@ namespace AWMonitor.ViewModels
             get { return password; }
             set
             {
-                if (value == null || value.Length <= 4)
+                if (value == null || value.Length <= 8)
                 {
                     SetProperty(ref password, value);
                 }
