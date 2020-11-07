@@ -1,4 +1,5 @@
-﻿using AWMonitor.Services;
+﻿using AWMonitor.Extensions;
+using AWMonitor.Services;
 using AWMonitor.Views;
 using Plugin.LocalNotifications;
 using System;
@@ -18,10 +19,7 @@ namespace AWMonitor.ViewModels
             get { return phone; }
             set
             {
-                if (value == null || value.Length <= 11)
-                {
-                    SetProperty(ref phone, value);
-                }
+                SetProperty(ref phone, value);
             }
         }
 
@@ -30,6 +28,7 @@ namespace AWMonitor.ViewModels
         {
             try
             {
+                phone = phone.GetDigits();
                 var code = await _userService.GetChangePasswordCode(phone);
                 CrossLocalNotifications.Current.Show("AWMonitor - Alterar Senha", code.ToString());
                 await App.Current.MainPage.Navigation.PushAsync(new ChangePasswordPage(phone, code));
@@ -39,7 +38,7 @@ namespace AWMonitor.ViewModels
             {
                 await App.Current.MainPage.DisplayAlert("Erro", "Não consta registro para o telefone informado.", "Ok");
             }
-        } 
+        }
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using AWMonitor.Models;
+﻿using AWMonitor.Extensions;
+using AWMonitor.Models;
 using AWMonitor.Services;
 using AWMonitor.Views;
 using System;
@@ -27,10 +28,7 @@ namespace AWMonitor.ViewModels
             get { return phone; }
             set
             {
-                if (value == null || value.Length <= 11)
-                {
-                    SetProperty(ref phone, value);
-                }
+                SetProperty(ref phone, value);
             }
         }
 
@@ -64,7 +62,7 @@ namespace AWMonitor.ViewModels
                 {
                     IsBusy = true;
 
-                    user = new User() { Phone = phone, Password = password };
+                    user = new User() { Phone = phone.GetDigits(), Password = password };
                     bool isLoggedIn = await _userService.Login(this.user);
 
                     if (isLoggedIn)

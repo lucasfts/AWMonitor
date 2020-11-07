@@ -1,4 +1,5 @@
-﻿using AWMonitor.Models;
+﻿using AWMonitor.Extensions;
+using AWMonitor.Models;
 using AWMonitor.Services;
 using AWMonitor.Views;
 using System;
@@ -18,10 +19,7 @@ namespace AWMonitor.ViewModels
             get { return phone; }
             set
             {
-                if (value == null || value.Length <= 11)
-                {
-                    SetProperty(ref phone, value);
-                }
+                SetProperty(ref phone, value);
             }
         }
 
@@ -55,7 +53,7 @@ namespace AWMonitor.ViewModels
                 {
                     IsBusy = true;
 
-                    var registerResult = await _userService.ChangePassword(phone, changePasswordCode, password);
+                    var registerResult = await _userService.ChangePassword(phone.GetDigits(), changePasswordCode, password);
 
                     if (registerResult.Result)
                     {
