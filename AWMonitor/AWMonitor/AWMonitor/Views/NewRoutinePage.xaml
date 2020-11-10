@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:extensions="clr-namespace:AWMonitor.Extensions"
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.NewRoutinePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <extensions:ActionConverter x:Key="actionConverter"></extensions:ActionConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Cancelar" x:Name="btnCancel" Clicked="btnCancel_Clicked" />
         <ToolbarItem Text="Salvar" x:Name="btnSave" Clicked="btnSave_Clicked" />
@@ -32,7 +39,7 @@
             </Grid>
 
             <Label Text="Ação" FontSize="Medium" />
-            <Picker Title="Escolha a ação" ItemsSource="{Binding Actions}" SelectedItem="{Binding Action}" />
+            <Picker Title="Escolha a ação" ItemsSource="{Binding Actions}" SelectedItem="{Binding Action}" ItemDisplayBinding="{Binding ., Converter={StaticResource actionConverter}}" />
 
             <Label  Text="Atuador" FontSize="Medium" />
             <Picker Title="Escolha o atuador" ItemsSource="{Binding Actuators}" SelectedItem="{Binding Actuator}" ItemDisplayBinding="{Binding Name}"  />

@@ -41,7 +41,6 @@ namespace AWMonitor.Views
 
         private async void webView_Navigated(object sender, WebNavigatedEventArgs e)
         {
-            await Task.Delay(2000);
             activity.IsVisible = activity.IsRunning = false;
         }
 

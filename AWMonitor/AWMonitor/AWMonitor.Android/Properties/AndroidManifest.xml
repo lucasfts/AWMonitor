@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="7" android:versionName="1.4.1" package="br.com.awmonitor" android:installLocation="internalOnly">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
-	<application android:label="AWMonitor" android:hardwareAccelerated="true" android:usesCleartextTraffic="true" android:icon="@drawable/estatisticas">
+	<application android:label="AWMonitor" android:usesCleartextTraffic="true" android:icon="@drawable/estatisticas">
 		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/estatisticas" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">

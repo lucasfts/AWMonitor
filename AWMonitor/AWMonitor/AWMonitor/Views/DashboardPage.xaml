@@ -13,7 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <WebView x:Name="webView" Navigating="webView_Navigating" Navigated="webView_Navigated"/>
+        <WebView x:Name="webView" Navigating="webView_Navigating" Navigated="webView_Navigated" />
         <ActivityIndicator VerticalOptions="CenterAndExpand" HeightRequest="100" x:Name="activity" Color="{StaticResource NavigationPrimary}"/>
     </Grid>
 

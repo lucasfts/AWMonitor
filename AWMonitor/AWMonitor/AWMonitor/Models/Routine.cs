@@ -17,7 +17,7 @@ namespace AWMonitor.Models
         public bool Enabled { get; set; }
         public bool Notify { get; set; }
 
-        public string DisplayName => $"{Sensor?.Name} {Condition?.Name} {ConditionValue} ({Action} {Actuator?.Name})";
+        public string DisplayName => $"{Sensor?.Name} {Condition?.Name} {ConditionValue} ({Action?.Replace("On", "Ligar").Replace("Off", "Desligar")} {Actuator?.Name})";
 
         public bool IsValid()
         {

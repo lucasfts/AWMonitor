@@ -2,9 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:extensions="clr-namespace:AWMonitor.Extensions"
              mc:Ignorable="d"
              x:Class="AWMonitor.Views.RoutineDetailPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <extensions:ActionConverter x:Key="actionConverter"></extensions:ActionConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="btnDelete" Text="Excluir" Clicked="btnDelete_Clicked" />
     </ContentPage.ToolbarItems>
@@ -23,7 +30,7 @@
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Ação: " HorizontalOptions="Start" />
-                <Label Text="{Binding Action}" HorizontalOptions="StartAndExpand" />
+                <Label Text="{Binding Action, Converter={StaticResource actionConverter}}" HorizontalOptions="StartAndExpand" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Atuador: " HorizontalOptions="Start" />

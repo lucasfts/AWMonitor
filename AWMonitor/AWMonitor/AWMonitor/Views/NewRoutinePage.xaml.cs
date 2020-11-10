@@ -37,11 +37,12 @@ namespace AWMonitor.Views
         {
             try
             {
-                btnSave.IsEnabled = false;
                 Routine routine = GetRoutineModel();
 
-                if (routine.IsValid())
+                if (routine.IsValid() && btnSave.IsEnabled)
                 {
+                    btnSave.IsEnabled = false;
+
                     MessagingCenter.Send(this, "AddItem", routine);
                     await Navigation.PopAsync();
                 }
@@ -72,6 +73,7 @@ namespace AWMonitor.Views
                 Enabled = viewModel.Enabled,
                 Notify = viewModel.Notify
             };
+
         }
 
     }
