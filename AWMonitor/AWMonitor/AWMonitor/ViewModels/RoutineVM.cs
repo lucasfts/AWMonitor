@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -23,15 +24,6 @@ namespace AWMonitor.ViewModels
 
             Routines = new ObservableCollection<Routine>();
             LoadRoutinesCommand = new Command(async () => await ExecuteLoadRoutinesCommand());
-
-            MessagingCenter.Subscribe<NewRoutinePage, Routine>(this, "AddItem", async (obj, item) =>
-            {
-                var result = await _routineService.AddItemAsync(item);
-                if (result)
-                    Routines.Add(item);
-                else
-                    await App.Current.MainPage.DisplayAlert("Erro", "Erro ao adicionar rotina", "Ok");
-            });
 
             MessagingCenter.Subscribe<RoutineDetailPage, Routine>(this, "DeleteItem", async (obj, item) =>
             {

@@ -12,20 +12,17 @@ using Xamarin.Forms.Xaml;
 namespace AWMonitor.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewRoutinePage : ContentPage
+    public partial class RoutineFormPage : ContentPage
     {
-        public NewRoutineVM viewModel { get; set; }
+        public RoutineFormVM viewModel { get; set; }
 
-        public NewRoutinePage()
+        public RoutineFormPage(Routine routine)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new NewRoutineVM();
-        }
+            viewModel = new RoutineFormVM(routine);
 
-        protected async override void OnAppearing()
-        {
-            await viewModel.LoadActuators();
+            BindingContext = viewModel;
         }
 
         private async void btnCancel_Clicked(object sender, EventArgs e)
@@ -37,18 +34,26 @@ namespace AWMonitor.Views
         {
             try
             {
-                Routine routine = GetRoutineModel();
+                Routine routine = viewModel.ToRoutineModel();
 
                 if (routine.IsValid() && btnSave.IsEnabled)
                 {
                     btnSave.IsEnabled = false;
 
-                    MessagingCenter.Send(this, "AddItem", routine);
-                    await Navigation.PopAsync();
+
+                    if (string.IsNullOrEmpty(viewModel.Id))
+                    {
+                        await viewModel.AddItem(routine);
+                    }
+                    else
+                    {
+                        await viewModel.EditItem(routine);
+                    }
+
                 }
                 else
                 {
-                    await DisplayAlert("Erro", "Preencha todos os campos para criar a rotina", "Ok");
+                    await DisplayAlert("Erro", "Preencha todos os campos para salvar a rotina", "Ok");
                 }
             }
             catch (Exception ex)
@@ -61,20 +66,7 @@ namespace AWMonitor.Views
             }
         }
 
-        private Routine GetRoutineModel()
-        {
-            return new Routine()
-            {
-                Sensor = viewModel.Sensor,
-                Actuator = viewModel.Actuator,
-                Action = viewModel.Action,
-                Condition = viewModel.Condition,
-                ConditionValue = viewModel.ConditionValue,
-                Enabled = viewModel.Enabled,
-                Notify = viewModel.Notify
-            };
-
-        }
+        
 
     }
 }

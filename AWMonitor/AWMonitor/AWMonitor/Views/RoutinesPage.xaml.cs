@@ -29,11 +29,13 @@ namespace AWMonitor.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            viewModel.LoadRoutinesCommand.Execute(null);
         }
 
         private async void btnAdd_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewRoutinePage());
+            await Navigation.PushAsync(new RoutineFormPage(new Routine()));
         }
 
         private async void tapItemDetail_Tapped(object sender, EventArgs e)

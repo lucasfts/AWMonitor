@@ -27,5 +27,10 @@ namespace AWMonitor.Views
             MessagingCenter.Send(this, "DeleteItem", Routine);
             await Navigation.PopAsync();
         }
+
+        private async void btnEdit_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RoutineFormPage(Routine));
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace AWMonitor.Services
         Task<ValidationResult> Register(User user);
         Task<int> GetChangePasswordCode(string phone);
         Task<ValidationResult> ChangePassword(string phone, int changePasswordCode, string password);
+        Task<User> GetLastUserLoginAsync();
     }
 }

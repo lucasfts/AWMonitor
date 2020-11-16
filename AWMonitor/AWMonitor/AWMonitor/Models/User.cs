@@ -1,6 +1,7 @@
 ﻿using AWMonitor.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ namespace AWMonitor.Models
     public class User
     {
         [JsonProperty("_id")]
+        [PrimaryKey]
         public string Id { get; set; }
 
         public string Name { get; set; }

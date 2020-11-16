@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:extensions="clr-namespace:AWMonitor.Extensions"
              mc:Ignorable="d"
-             x:Class="AWMonitor.Views.NewRoutinePage">
+             x:Class="AWMonitor.Views.RoutineFormPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <extensions:ActionConverter x:Key="actionConverter"></extensions:ActionConverter>

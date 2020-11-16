@@ -21,8 +21,6 @@ namespace AWMonitor.Views
             InitializeComponent();
 
             MasterBehavior = MasterBehavior.Popover;
-
-            //MenuPages.Add((int)MenuItemType.History, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)

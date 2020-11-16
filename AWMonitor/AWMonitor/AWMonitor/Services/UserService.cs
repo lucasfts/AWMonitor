@@ -1,6 +1,7 @@
 ﻿using AWMonitor.Models;
 using AWMonitor.Services.Helpers;
 using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,13 @@ namespace AWMonitor.Services
 {
     public class UserService : IUserService
     {
+        private SQLiteAsyncConnection _database => SQLiteHelper.GetAsyncConnection();
+
+        public UserService()
+        {
+            _database.CreateTableAsync<User>().Wait();
+        }
+
         public async Task<bool> Login(User user)
         {
             var response = await HttpHelper.PostAsync("users/login", user);
@@ -17,6 +25,19 @@ namespace AWMonitor.Services
             if (response.IsSuccessStatusCode)
             {
                 var strResult = response.Content.ReadAsStringAsync().Result;
+                var lastUser = await GetLastUserLoginAsync();
+                if (lastUser == null)
+                {
+                    await _database.InsertAsync(user);
+                }
+                else
+                {
+                    if (lastUser.Id != user.Id || lastUser.Phone != user.Phone || lastUser.Password != user.Password)
+                    {
+                        await _database.Table<User>().DeleteAsync(x => true);
+                        await _database.InsertAsync(user);
+                    }
+                }
                 return true;
             }
 
@@ -62,6 +83,12 @@ namespace AWMonitor.Services
             }
 
             return new ValidationResult { Result = false, ErrorMessage = strResult };
+        }
+
+        public async Task<User> GetLastUserLoginAsync()
+        {
+            var item = await _database.Table<User>().FirstOrDefaultAsync();
+            return item;
         }
     }
 }

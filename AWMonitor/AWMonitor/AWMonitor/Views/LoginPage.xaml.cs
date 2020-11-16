@@ -21,8 +21,16 @@ namespace AWMonitor.Views
         {
             InitializeComponent();
 
-            viewModel = new LoginVM() { Phone = "11123456789", Password="12345678" };
+            viewModel = new LoginVM();
+
             BindingContext = viewModel;
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await viewModel.LoadLastUserLogin();
         }
 
         private void Register_Tapped(object sender, EventArgs e)

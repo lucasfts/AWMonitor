@@ -11,7 +11,7 @@
         <ToolbarItem x:Name="btnAdd" Text="Adicionar" Clicked="btnAdd_Clicked" />
     </ContentPage.ToolbarItems>
 
-    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadRoutinesCommand}">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}"  x:Name="refreshView">
         <CollectionView ItemsSource="{Binding Routines}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

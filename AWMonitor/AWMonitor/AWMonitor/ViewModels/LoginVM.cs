@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AWMonitor.ViewModels
@@ -49,6 +50,14 @@ namespace AWMonitor.ViewModels
         public LoginVM()
         {
             User = new User();
+        }
+
+        public async Task LoadLastUserLogin()
+        {
+            var lastUser = await _userService.GetLastUserLoginAsync();
+
+            Phone = lastUser?.Phone;
+            Password = lastUser?.Password;
         }
 
         public async void Login()
