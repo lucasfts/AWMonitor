@@ -25,17 +25,19 @@ namespace AWMonitor.Services
             if (response.IsSuccessStatusCode)
             {
                 var strResult = response.Content.ReadAsStringAsync().Result;
+                var userResult = JsonConvert.DeserializeObject<User>(strResult);
                 var lastUser = await GetLastUserLoginAsync();
+
                 if (lastUser == null)
                 {
-                    await _database.InsertAsync(user);
+                    await _database.InsertAsync(userResult);
                 }
                 else
                 {
-                    if (lastUser.Id != user.Id || lastUser.Phone != user.Phone || lastUser.Password != user.Password)
+                    if (lastUser.Id != userResult.Id || lastUser.Phone != userResult.Phone || lastUser.Password != userResult.Password)
                     {
                         await _database.Table<User>().DeleteAsync(x => true);
-                        await _database.InsertAsync(user);
+                        await _database.InsertAsync(userResult);
                     }
                 }
                 return true;
