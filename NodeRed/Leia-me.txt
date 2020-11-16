@@ -1,0 +1,19 @@
+Configuração do servidor Node Red.
+
+1- Instale no servidor os softwares: Node Red, Mongo Db e Apache2.
+
+2- Verifique se o Node Red possui os componentes a seguir devidamente instalados.
+	node-red
+	node-red-contrib-bson
+	node-red-contrib-loop-processing
+	node-red-contrib-mqtt-broker
+	node-red-dashboard
+	node-red-node-mongodb
+	node-red-node-rbe
+	node-red-node-tail
+	
+3- Importe o arquivo flows.json e clique em deploy para atualizar o ambiente.
+
+4- Migre os arquivos na Pasta apache2 para a pasta que o contem o index.html do apache.
+
+5- Crie um QrCode de acordo com o formato http://{endereço do servidor}:{porta} referentes ao servidor utilizado.
