@@ -54,7 +54,7 @@ namespace AWMonitor.Services.Helpers
         private static async Task<string> GetApiUrl()
         {
             var settings = await _settingsService.GetFirstOrDefaultAsync();
-            var _apiUrl = settings != null ? $"{settings.Url}:{settings.Port}" : "http://ec2-54-159-186-28.compute-1.amazonaws.com:1880";
+            var _apiUrl = settings != null ? $"{settings.Url}:{settings.Port}" : "http://ec2-54-146-195-150.compute-1.amazonaws.com:1880";
 
             return _apiUrl;
         }
